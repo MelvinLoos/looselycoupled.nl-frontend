@@ -16,12 +16,33 @@
         background-color: #000 !important;
       }
 
+      #navbarNav {
+        background-color: #222;
+      }
+
+      .navbar-top {
+        padding: 0;
+      }
+
+      .navbar-brand {
+        padding-left: 10px;
+      }
+
+      .navbar-nav {
+        padding: 0 5%;
+      }
+
       .bg-nebula {
         background: url('img/background_nebula.jpg');
         background-attachment: fixed;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+      }
+
+      .svg-fix {
+        /* Fix for ie-10 */
+        width: 100% \9;
       }
 
       #header {
@@ -31,14 +52,23 @@
     <title>Loosely Coupled</title>
   </head>
   <body class="bg-dark">
+    <nav class="navbar navbar-top navbar-toggleable-md navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><img src="img/icon-left-font-monochrome-white.svg" width="225" height="50" alt="Loosely Coupled"></a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+              <!-- todo -->
+              <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          </ul>
+      </div>
+    </nav>
     <div class="container-fluid bg-nebula">
-        <nav class="navbar navbar-dark bg-dark">
-            <a href="#"><img src="img/icon-left-font-monochrome-white.svg" width="225" height="50" alt="Loosely Coupled"></a>
-        </nav>
         <div class="row" id="header">
           <div class="col-sm"></div> 
           <div class="col-sm text-center" style="margin: auto;">
-            <img src="img/icon.svg" width="400" height="400" alt="Logo">
+            <img class="img-fluid svg-fix" src="img/icon.svg" width="400" height="400" alt="Logo">
           </div> 
           <div class="col-sm"></div> 
         </div>
@@ -53,6 +83,21 @@
           <div class="col"></div>
           <div class="col-6">
             <nav class="navbar navbar-dark bg-dark">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">About</a>
+                </li>
+              </ul>
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Contact</a>
+                </li>
+              </ul>
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a class="nav-link" href="#"></a>
+                </li>
+              </ul>
             </nav>
           </div>
           <div class="col"></div>
