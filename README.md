@@ -1,6 +1,6 @@
 # looselycoupled.nl-frontend
 
-> Loosely Coupled website frontend
+> Loosely Coupled website frontend built in VueJS
 
 ## Build Setup
 
