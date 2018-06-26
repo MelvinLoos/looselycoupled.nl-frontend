@@ -8,7 +8,7 @@
             <b-col sm="1"></b-col> 
         </b-row>
         <b-row class="text-light text-center">
-            <b-col sm="1"></b-col> 
+            <b-col sm="1" lg="3"></b-col> 
             <b-col>
                 <h1>Welcome to the new age</h1>
                 <p>
@@ -37,7 +37,7 @@
                 <br />
                 <br />
             </b-col>
-            <b-col sm="1"></b-col> 
+            <b-col sm="1" lg="3"></b-col> 
         </b-row>
         <b-row class="text-light-50">
         <b-col></b-col>
