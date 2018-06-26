@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="false" type="dark">
+    <b-navbar toggleable="false" type="dark" fixed="top" class="bg-dark">
         <b-navbar-brand href="#"><b-img src="./assets/icon-left-font-monochrome-white.svg" width="225" height="50" alt="Loosely Coupled" /></b-navbar-brand>
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
         <b-collapse is-nav id="nav_collapse">
