@@ -5,8 +5,14 @@
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
         <b-collapse is-nav id="nav_collapse">
           <b-navbar-nav>
-              <!-- todo -->
-              <b-nav-item>About</b-nav-item>
+              <b-row class="text-center">
+                <b-col sm="1" lg="3"></b-col>
+                <b-col>
+                  <!-- todo -->
+                  <b-nav-item>About</b-nav-item>
+                </b-col>
+                <b-col sm="1" lg="3"></b-col> 
+              </b-row>
           </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -18,25 +24,26 @@
 </template>
 
 <script>
-import VueRouter from 'vue-router'
+import VueRouter from "vue-router";
 
 export default {
-  name: 'app',
-  data () {
+  name: "app",
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+      msg: "Welcome to Your Vue.js App"
+    };
   },
   computed: {
-    background () {
-      return require('./assets/' + this.id + '.svg')
+    background() {
+      return require("./assets/" + this.id + ".svg");
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
-body,html {
+body,
+html {
   height: 100%;
 }
 
@@ -57,11 +64,10 @@ body,html {
 }
 
 .bg-nebula {
-  background: url('./assets/background_nebula.jpg');
+  background: url("./assets/background_nebula.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 </style>
