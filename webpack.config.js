@@ -2,6 +2,7 @@ var path = require('path')
 var webpack = require('webpack')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/main.js',
@@ -71,6 +72,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin("main.css"),
+    new Dotenv(),
     new CopyWebpackPlugin(['index.html'], {})
   ],
   devtool: '#eval-source-map'
