@@ -1,67 +1,75 @@
 <template>
   <div id="app">
-    <b-navbar toggleable="false" type="dark" fixed="top" class="bg-dark">
-      <b-navbar-brand href="#"><b-img src="./assets/icon-left-font-monochrome-white.svg" width="225" height="50" alt="Loosely Coupled" /></b-navbar-brand>
-      <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-      <b-collapse is-nav id="nav_collapse">
-        <b-row class="text-center">
-          <b-col sm="1" lg="3"></b-col>
-          <b-col>
-            <b-navbar-nav v-for="page in pages">
-              <!-- todo -->
-              <b-nav-item :to="page.url">{{page.title}}</b-nav-item>
-            </b-navbar-nav>
-          </b-col>
-          <b-col sm="1" lg="3"></b-col> 
-        </b-row>
-      </b-collapse>
-    </b-navbar>
+    <TopMenu></TopMenu>
     <b-container fluid class="bg-nebula">
-      <!-- component matched by the route will render here -->
-      <router-view>
-
-      </router-view>
+      <b-row class="text-light-50">
+        <b-col cols="1" md="3"></b-col>
+        <b-col cols="10" md="6">
+          <b-alert v-for="error in errors" :key="error.request" variant="danger"
+                  dismissible
+                  :show="showAlert"
+                  @dismissed="showAlert=false"
+                  fade
+                  class="app-alert">
+            {{error.response.data}}
+          </b-alert>
+          <router-view></router-view>
+          <b-navbar type="dark" fixed="bottom" class="text-center">
+            <b-navbar-nav>
+                <b-nav-item></b-nav-item>
+            </b-navbar-nav>
+            <b-navbar-nav>
+                <b-nav-text>{{copyright}}</b-nav-text>
+            </b-navbar-nav>
+            <b-navbar-nav >
+                <b-nav-item></b-nav-item>
+            </b-navbar-nav>
+          </b-navbar>
+        </b-col>
+        <b-col cols="1" md="3"></b-col>
+      </b-row>
     </b-container>
   </div>
 </template>
 
 <script>
-import VueRouter from "vue-router";
-import {HTTP} from './http-common.js';
+import TopMenu from "./TopMenu.vue";
+import VueRouter from 'vue-router'
 
 export default {
   name: "app",
   data() {
     return {
-      pages: [],
-      errors: []
+      errors: this.$errors
     };
   },
   computed: {
     background() {
-      return require("./assets/" + this.id + ".svg");
+      return require("./assets/background_nebula.jpg");
+    },
+    showAlert: function () {
+      return true;
+    },
+    copyright: function () {
+      var d = new Date();
+      return '© ' + d.getFullYear() + ' Loosely Coupled';
     }
   },
-  created() {
-    HTTP.get('collections/get/pages')
-    .then(response => {
-      this.pages = response.data.entries;
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
+  components: {
+    TopMenu
   }
 };
 </script>
 
 <style lang="scss">
 body,
-html {
+html,
+#app {
   height: 100%;
 }
 
-.bg-dark {
-  background-color: #000 !important;
+.app-alert {
+  z-index: 99999;
 }
 
 .navbar-top {
@@ -77,10 +85,16 @@ html {
 }
 
 .bg-nebula {
+  height: 100%;
+  background-color: #000;
+  -webkit-transition: background-color 500ms ease-out 1s;
+  -moz-transition: background-color 500ms ease-out 1s;
+  -o-transition: background-color 500ms ease-out 1s;
+  transition: background-color 500ms ease-out 1s;
   background: url("./assets/background_nebula.jpg");
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: auto;
 }
 </style>
