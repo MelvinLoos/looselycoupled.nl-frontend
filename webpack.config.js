@@ -1,8 +1,8 @@
 var path = require('path')
 var webpack = require('webpack')
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const Dotenv = require('dotenv-webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin")
+var CopyWebpackPlugin = require('copy-webpack-plugin')
+var Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/main.js',
@@ -83,9 +83,7 @@ if (process.env.NODE_ENV === 'production') {
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,

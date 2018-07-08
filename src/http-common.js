@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export const HTTP = axios.create({
-  baseURL: process.env.COCKPIT_BASEURL,
+  baseURL: process.env.VUE_APP_COCKPIT_BASEURL,
   params: {
-    token: process.env.COCKPIT_TOKEN
+    token: process.env.VUE_APP_COCKPIT_TOKEN
   }
 })
