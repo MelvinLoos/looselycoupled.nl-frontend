@@ -4,7 +4,7 @@
             <b-col sm="1"></b-col> 
             <b-col sm="10" class="text-center" style="margin: auto;">
                 <b-img class="svg-fix" src="../assets/icon.svg" fluid width="400" height="400" alt="Logo" />
-                TEST
+                {{page.title}}
             </b-col> 
             <b-col sm="1"></b-col> 
         </b-row>
