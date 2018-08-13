@@ -6,9 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 import Default from './Pages/Default.vue'
 import {HTTP} from './http-common.js';
+import VueLazyload from 'vue-lazyload'
 
 Vue.use(BootstrapVue)
 Vue.use(VueRouter)
+Vue.use(VueLazyload)
 
 var errors = []
 var routes = []

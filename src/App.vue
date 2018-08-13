@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TopMenu></TopMenu>
-    <b-container fluid class="bg-nebula">
+    <b-container fluid class="bg-app" v-lazy:background-image="imgUrl">
       <b-row class="text-light-50">
         <b-col cols="1" md="3"></b-col>
         <b-col cols="10" md="6">
@@ -34,19 +34,17 @@
 
 <script>
 import TopMenu from "./TopMenu.vue";
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router';
 
 export default {
   name: "app",
   data() {
     return {
-      errors: this.$errors
+      errors: this.$errors,
+      imgUrl: '/src/assets/background_nebula.jpg'
     };
   },
   computed: {
-    background() {
-      return require("./assets/background_nebula.jpg");
-    },
     showAlert: function () {
       return true;
     },
@@ -84,17 +82,12 @@ html,
   padding: 0 5%;
 }
 
-.bg-nebula {
+.bg-app {
   height: 100%;
   background-color: #000;
-  -webkit-transition: background-color 500ms ease-out 1s;
-  -moz-transition: background-color 500ms ease-out 1s;
-  -o-transition: background-color 500ms ease-out 1s;
-  transition: background-color 500ms ease-out 1s;
-  background: url("./assets/background_nebula.jpg");
-  background-attachment: fixed;
+  background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: auto;
+  transition-property: background-image;
+  transition-duration: 5s;
 }
 </style>
