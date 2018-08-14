@@ -9,13 +9,15 @@
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
     "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
     "bootstrap-vue": "^1.2.0",
     "copy-webpack-plugin": "^4.5.1",
     "dotenv-webpack": "^1.5.7",
+    "image-webpack-loader": "^4.3.1",
     "popper.js": "^1.12.9",
     "vue": "^2.5.3",
+    "vue-progressive-image": "^3.1.0",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

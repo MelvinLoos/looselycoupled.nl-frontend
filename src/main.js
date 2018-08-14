@@ -6,11 +6,11 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
 import Default from './Pages/Default.vue'
 import {HTTP} from './http-common.js';
-import VueLazyload from 'vue-lazyload'
+import VueProgressiveImage from 'vue-progressive-image'
 
 Vue.use(BootstrapVue)
 Vue.use(VueRouter)
-Vue.use(VueLazyload)
+Vue.use(VueProgressiveImage)
 
 var errors = []
 var routes = []

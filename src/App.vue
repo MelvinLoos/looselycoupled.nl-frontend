@@ -1,7 +1,11 @@
 <template>
   <div id="app">
     <TopMenu></TopMenu>
-    <b-container fluid class="bg-app" v-lazy:background-image="imgUrl">
+    <progressive-background 
+      src="/src/assets/background_nebula.jpg" 
+      placeholder="/src/assets/background_nebula.jpg"
+    />
+    <b-container fluid class="bg-app">
       <b-row class="text-light-50">
         <b-col cols="1" md="3"></b-col>
         <b-col cols="10" md="6">
