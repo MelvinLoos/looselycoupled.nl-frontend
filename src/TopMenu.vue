@@ -7,9 +7,9 @@
           <b-row class="text-center">
               <b-col sm="1" lg="3"></b-col>
               <b-col>
-              <b-navbar-nav v-for="page in pages" v-bind:key="page.title">
-                  <b-nav-item  :to="page" active-class="active">{{page.title}}</b-nav-item>
-              </b-navbar-nav>
+                <b-navbar-nav>
+                    <b-nav-item v-for="page in pages" v-bind:key="page.title" :to="page">{{page.title}}</b-nav-item>
+                </b-navbar-nav>
               </b-col>
               <b-col sm="1" lg="3"></b-col> 
           </b-row>

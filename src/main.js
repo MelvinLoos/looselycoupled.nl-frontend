@@ -4,7 +4,7 @@ import BootstrapVue from "bootstrap-vue"
 import App from './App.vue'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
-import Default from './Pages/Default.vue'
+import DefaultPage from './Pages/Default.vue'
 import {HTTP} from './http-common.js';
 import VueProgressiveImage from 'vue-progressive-image'
 
@@ -22,7 +22,7 @@ HTTP.get('collections/get/pages')
     var page = pages[i]
     routes.push({
       path: page.url,
-      component: Default,
+      component: DefaultPage,
       props: { page: page },
       title: page.title
     })
