@@ -50,14 +50,14 @@ module.exports = {
         })
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
         }
       },
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(gif|png|jpe?g)$/i,
         use: [
           'file-loader',
           {
@@ -85,7 +85,11 @@ module.exports = {
             }
           },
         ],
-      }
+      },
+      {
+        test: /\.svg$/,
+        loader: 'vue-svg-loader',
+      },
     ]
   },
   resolve: {

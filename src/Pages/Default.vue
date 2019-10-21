@@ -31,34 +31,6 @@ export default {
       error: null
     }
   },
-  beforeRouteEnter (to, from, next) {
-    console.log('beforeRouteEnter')
-      HTTP.post("collections/get/pages", {
-        filter: { url: this.$router.currentRoute.path }
-      })
-      .then(response => {
-        next(vm => vm.setData(response.data.entries.shift()))
-      })
-      .catch(e => {
-        this.error = err.toString()
-      });
-  },
-  // when route changes and this component is already rendered,
-  // the logic will be slightly different.
-  beforeRouteUpdate (to, from, next) {
-    console.log('beforeRouteUpdate')
-    this.page = null
-    HTTP.post("collections/get/pages", {
-        filter: { url: this.$router.currentRoute.path }
-      })
-      .then(response => {
-        this.setData(response.data.entries.shift())
-        next()
-      })
-      .catch(e => {
-        this.error = err.toString()
-      });
-  },
   methods: {
     setData (page) {
       this.page = page

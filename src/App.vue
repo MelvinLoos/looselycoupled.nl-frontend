@@ -2,9 +2,10 @@
   <div id="app">
     <TopMenu></TopMenu>
     <b-container fluid class="bg-app">
-      <b-row class="text-light-50">
+      <b-row align-v="start"><b-col>-</b-col></b-row>
+      <b-row class="text-light-50" align-v="center">
         <b-col cols="1" md="3"></b-col>
-        <b-col cols="10" md="6">
+        <b-col cols="10" md="6" class="content">
           <b-alert v-for="error in errors" :key="error.request" variant="danger"
                   dismissible
                   :show="showAlert"
@@ -14,20 +15,35 @@
             {{error.response.data}}
           </b-alert>
           <router-view></router-view>
-          <b-navbar type="dark" fixed="bottom" class="text-center">
-            <b-navbar-nav>
-                <b-nav-item></b-nav-item>
-            </b-navbar-nav>
-            <b-navbar-nav>
-                <b-nav-text>{{copyright}}</b-nav-text>
-            </b-navbar-nav>
-            <b-navbar-nav >
-                <b-nav-item></b-nav-item>
-            </b-navbar-nav>
-          </b-navbar>
+          <div class="introduction">
+            <h1>Loosely Coupled</h1>
+            <h2>A web development company</h2>
+            <div>
+              Specializes in APIs, integrations & process automation.
+              <br />
+              Experienced with:
+              <br />
+              <b-list-group>
+                <b-list-group-item variant="dark">OpenAPI / Swagger</b-list-group-item>
+                <b-list-group-item variant="dark">REST</b-list-group-item>
+                <b-list-group-item variant="dark">SOAP</b-list-group-item>
+                <b-list-group-item variant="dark">BPMN</b-list-group-item>
+                <b-list-group-item variant="dark">Camunda</b-list-group-item>
+              </b-list-group>
+            </div>
+            <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="melvinloos">
+              <a class="LI-simple-link" href='https://nl.linkedin.com/in/melvinloos?trk=profile-badge'>Melvin Loos</a>
+            </div>
+          </div>
         </b-col>
         <b-col cols="1" md="3"></b-col>
       </b-row>
+      <b-row align-v="end"><b-col>-</b-col></b-row>
+      <b-navbar type="dark" fixed="bottom" class="text-center">
+        <b-navbar-nav class="nav-footer">
+            <b-nav-text>{{copyright}}</b-nav-text>
+        </b-navbar-nav>
+      </b-navbar>
     </b-container>
   </div>
 </template>
@@ -56,7 +72,7 @@ export default {
   },
   components: {
     TopMenu,
-    Page
+    Page,
   }
 };
 </script>
@@ -107,4 +123,20 @@ html,
   }
 }
 
+.content
+{
+  margin-top: 76px;
+  color: #FFFFFF;
+  background-color: #000000;
+}
+
+.introduction
+{
+  text-align: center;
+}
+
+.nav-footer
+{
+  margin: auto;
+}
 </style>

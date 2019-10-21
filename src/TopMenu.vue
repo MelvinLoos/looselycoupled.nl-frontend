@@ -1,5 +1,5 @@
 <template>
-    <b-navbar id="top_navigation" toggleable="false" type="dark" fixed="top">
+    <b-navbar id="top_navigation" toggleable="false" type="dark" fixed="top" class="bg-dark">
         <b-navbar-brand href="/"><b-img src="/src/assets/icon-left-font-monochrome-white.svg" width="225" height="50" alt="Loosely Coupled" /></b-navbar-brand>
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
         <b-collapse is-nav id="nav_collapse">
@@ -22,15 +22,6 @@ export default {
   name: "top-menu",
   methods: {
     updateMenuVisibility (event) {
-      var doc = document.documentElement;
-      var left = (window.pageXOffset || doc.scrollLeft) - (doc.clientLeft || 0);
-      var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
-      var element = document.getElementById("top_navigation");
-      if (top > 200) {
-        element.classList.add("bg-dark");
-      } else {
-        element.classList.remove("bg-dark");
-      }
     }
   },
   data() {
