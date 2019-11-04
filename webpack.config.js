@@ -107,7 +107,10 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin("main.css"),
     new Dotenv(),
-    new CopyWebpackPlugin(['index.html'], {})
+    new CopyWebpackPlugin(['index.html'], {}),
+    new webpack.ProvidePlugin({
+      dust: 'dustjs-linkedin'
+    }),
   ],
   devtool: '#eval-source-map'
 }
