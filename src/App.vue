@@ -20,9 +20,9 @@
             <h2>A web development company</h2>
             <div>
               Specializes in APIs, integrations & process automation.
-              <br />
+              <br></br>
               Experienced with:
-              <br />
+              <br></br>
               <b-list-group>
                 <b-list-group-item variant="dark">OpenAPI / Swagger</b-list-group-item>
                 <b-list-group-item variant="dark">REST</b-list-group-item>
@@ -30,6 +30,7 @@
                 <b-list-group-item variant="dark">BPMN</b-list-group-item>
                 <b-list-group-item variant="dark">Camunda</b-list-group-item>
               </b-list-group>
+              <br></br>
             </div>
             <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="dark" data-vanity="melvinloos">
               <a class="LI-simple-link" href='https://nl.linkedin.com/in/melvinloos?trk=profile-badge'>Melvin Loos</a>
