@@ -106,13 +106,20 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin("main.css"),
-    new Dotenv(),
     new CopyWebpackPlugin(['index.html'], {}),
     new webpack.ProvidePlugin({
       dust: 'dustjs-linkedin'
     }),
   ],
   devtool: '#eval-source-map'
+}
+
+if (process.env.NODE_ENV === 'development') {
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new Dotenv({
+      path: path.resolve(__dirname, '.env')
+    }),
+  ]);
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -127,9 +134,6 @@ if (process.env.NODE_ENV === 'production') {
       compress: {
         warnings: false
       }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
     })
   ])
 }
