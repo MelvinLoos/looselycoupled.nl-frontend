@@ -3,6 +3,7 @@ var webpack = require('webpack')
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var Dotenv = require('dotenv-webpack');
+var ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -109,6 +110,28 @@ module.exports = {
     new CopyWebpackPlugin(['index.html'], {}),
     new webpack.ProvidePlugin({
       dust: 'dustjs-linkedin'
+    }),
+    new ManifestPlugin({
+      seed: {
+        short_name: "Loosely Coupled",
+        name: "Loosely Coupled HQ",
+        icons: [
+            {
+                "src": "/static/icons-192.png",
+                "type": "image/png",
+                "sizes": "192x192"
+            },
+            {
+                "src": "/static/icons-512.png",
+                "type": "image/png",
+                "sizes": "512x512"
+            }
+        ],
+        start_url: "/",
+        background_color: "#000000",
+        display: "standalone",
+        theme_color: "#000000",
+      }
     }),
   ],
   devtool: '#eval-source-map'
