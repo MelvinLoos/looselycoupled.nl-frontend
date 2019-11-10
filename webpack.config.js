@@ -114,7 +114,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin(),
     new AppManifestWebpackPlugin({
-      logo: './src/assets/icon.png',
+      logo: path.resolve(__dirname, './src/assets/icon.png'),
       inject: false,
       config: {
         appName: "Loosely Coupled",
