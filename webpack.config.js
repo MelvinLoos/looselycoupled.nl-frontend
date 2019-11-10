@@ -1,9 +1,10 @@
-var path = require('path')
-var webpack = require('webpack')
-var ExtractTextPlugin = require("extract-text-webpack-plugin")
-var CopyWebpackPlugin = require('copy-webpack-plugin')
-var Dotenv = require('dotenv-webpack');
-var ManifestPlugin = require('webpack-manifest-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AppManifestWebpackPlugin = require('app-manifest-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -111,27 +112,19 @@ module.exports = {
     new webpack.ProvidePlugin({
       dust: 'dustjs-linkedin'
     }),
-    new ManifestPlugin({
-      seed: {
-        short_name: "Loosely Coupled",
-        name: "Loosely Coupled HQ",
-        icons: [
-            {
-                "src": "/static/icons-192.png",
-                "type": "image/png",
-                "sizes": "192x192"
-            },
-            {
-                "src": "/static/icons-512.png",
-                "type": "image/png",
-                "sizes": "512x512"
-            }
-        ],
+    new HtmlWebpackPlugin(),
+    new AppManifestWebpackPlugin({
+      logo: './src/assets/icon.png',
+      inject: false,
+      config: {
+        appName: "Loosely Coupled",
+        appDescription: "Loosely Coupled HQ",
+        developerName: "Melvin Loos",
         start_url: "/",
-        background_color: "#000000",
+        background: "#000000",
         display: "standalone",
         theme_color: "#000000",
-      }
+      },
     }),
   ],
   devtool: '#eval-source-map'
