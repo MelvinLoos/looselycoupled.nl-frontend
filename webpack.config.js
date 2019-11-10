@@ -107,12 +107,15 @@ module.exports = {
     hints: false
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Loosely Coupled',
+      template: 'index.html',
+    }),
     new ExtractTextPlugin("main.css"),
     new CopyWebpackPlugin(['index.html'], {}),
     new webpack.ProvidePlugin({
       dust: 'dustjs-linkedin'
     }),
-    new HtmlWebpackPlugin(),
     new AppManifestWebpackPlugin({
       logo: path.resolve(__dirname, './src/assets/icon.png'),
       inject: false,
