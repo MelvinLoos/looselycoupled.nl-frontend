@@ -1,7 +1,10 @@
-var path = require('path')
-var webpack = require('webpack')
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const AppManifestWebpackPlugin = require('app-manifest-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -49,12 +52,46 @@ module.exports = {
         })
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif)$/,
         loader: 'file-loader',
         options: {
           name: '[name].[ext]?[hash]'
         }
-      }
+      },
+      {
+        test: /\.(gif|png|jpe?g)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              mozjpeg: {
+                progressive: true,
+                quality: 65
+              },
+              // optipng.enabled: false will disable optipng
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              // the webp option will enable WEBP
+              webp: {
+                quality: 75
+              }
+            }
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        loader: 'vue-svg-loader',
+      },
     ]
   },
   resolve: {
@@ -70,10 +107,38 @@ module.exports = {
     hints: false
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Loosely Coupled',
+      template: 'index.html',
+    }),
     new ExtractTextPlugin("main.css"),
-    new CopyWebpackPlugin(['index.html'], {})
+    new CopyWebpackPlugin(['index.html'], {}),
+    new webpack.ProvidePlugin({
+      dust: 'dustjs-linkedin'
+    }),
+    new AppManifestWebpackPlugin({
+      logo: path.resolve(__dirname, './src/assets/icon.png'),
+      inject: false,
+      config: {
+        appName: "Loosely Coupled",
+        appDescription: "Loosely Coupled HQ",
+        developerName: "Melvin Loos",
+        start_url: "/",
+        background: "#000000",
+        display: "standalone",
+        theme_color: "#000000",
+      },
+    }),
   ],
   devtool: '#eval-source-map'
+}
+
+if (process.env.NODE_ENV === 'development') {
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new Dotenv({
+      path: path.resolve(__dirname, '.env')
+    }),
+  ]);
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -81,18 +146,13 @@ if (process.env.NODE_ENV === 'production') {
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
+      'process.env.NODE_ENV': JSON.stringify('production')
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
         warnings: false
       }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
     })
   ])
 }

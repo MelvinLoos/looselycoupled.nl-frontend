@@ -4,14 +4,13 @@ import BootstrapVue from "bootstrap-vue"
 import App from './App.vue'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
-import Home from './Pages/Home.vue'
+import VueProgressiveImage from 'vue-progressive-image'
 
 Vue.use(BootstrapVue)
 Vue.use(VueRouter)
+Vue.use(VueProgressiveImage)
 
-const routes = [
-  { path: '/', component: Home }
-]
+const routes = [];
 
 const router = new VueRouter({
   routes // short for `routes: routes`
@@ -20,5 +19,7 @@ const router = new VueRouter({
 const app = new Vue({
   router: router,
   el: '#app',
-  render: h => h(App)
-}).$mount('#app')
+  render: h => h(App),
+  data: {
+  }
+})
